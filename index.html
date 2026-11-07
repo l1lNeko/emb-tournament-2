@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07140f">
+  <meta name="description" content="EMB TOURNAMENT 2 COMING SOON — cuenta regresiva oficial.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>EMB TOURNAMENT 2 COMING SOON</title>
+  <style>
+    :root {
+      --bg: #07140f;
+      --green: #0c3828;
+      --green-bright: #21a36c;
+      --metal: #a9b5ae;
+      --text: #f1f5f2;
+      --muted: #a8b8ae;
+      --line: rgba(111, 183, 143, .28);
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; margin: 0; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow-x: hidden;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 50% 38%, rgba(22, 93, 61, .42), transparent 48%),
+        linear-gradient(135deg, #030906 0%, #0b2118 48%, #050d09 100%);
+      font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent 0 5px, rgba(255,255,255,.012) 6px);
+      opacity: .45;
+    }
+    main {
+      width: min(100% - 36px, 1000px);
+      padding: 64px 24px 54px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      color: #8cc5a5;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    h1 {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: clamp(2.15rem, 7vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      font-weight: 800;
+      text-wrap: balance;
+      text-shadow: 0 4px 34px rgba(0,0,0,.55);
+    }
+    h1 span {
+      display: block;
+      color: #7cc69a;
+      text-shadow: 0 0 28px rgba(33,163,108,.22);
+    }
+    .rule {
+      width: min(220px, 45%);
+      height: 2px;
+      margin: 34px auto 28px;
+      background: linear-gradient(90deg, transparent, var(--green-bright), transparent);
+    }
+    .label {
+      color: var(--metal);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      margin-bottom: 13px;
+    }
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(8px, 2vw, 18px);
+      width: min(760px, 100%);
+      margin: 0 auto;
+    }
+    .unit {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(20,55,40,.72), rgba(4,16,11,.72));
+      box-shadow: inset 0 1px rgba(255,255,255,.055), 0 12px 34px rgba(0,0,0,.18);
+      border-radius: 10px;
+      padding: clamp(14px, 3vw, 25px) 6px clamp(12px, 2.5vw, 20px);
+      min-width: 0;
+    }
+    .number {
+      display: block;
+      font-variant-numeric: tabular-nums;
+      font-size: clamp(2rem, 7vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -.045em;
+    }
+    .unit-name {
+      display: block;
+      margin-top: 12px;
+      color: #9eb4a6;
+      font-size: clamp(.58rem, 1.6vw, .75rem);
+      letter-spacing: .18em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .sound-control {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 28px;
+      padding: 11px 17px;
+      border: 1px solid rgba(140, 197, 165, .38);
+      border-radius: 999px;
+      color: #c5d8cb;
+      background: rgba(7, 20, 15, .55);
+      font: inherit;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .sound-control:hover {
+      color: #fff;
+      border-color: #7cc69a;
+      background: rgba(33, 163, 108, .14);
+    }
+    .sound-control:focus-visible {
+      outline: 2px solid #8bd0a5;
+      outline-offset: 4px;
+    }
+    .sound-control[aria-pressed="true"] {
+      color: #a9e2bd;
+      border-color: rgba(124, 198, 154, .7);
+    }
+    .sound-icon { font-size: .95rem; line-height: 1; }
+    .event-date {
+      margin-top: 30px;
+      color: #d5dfd8;
+      font-size: clamp(.9rem, 2vw, 1.05rem);
+      letter-spacing: .08em;
+    }
+    .event-date strong { color: #8bd0a5; font-weight: 700; }
+    .status {
+      margin-top: 48px;
+      color: #789889;
+      font-size: .68rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+    }
+    .top-nav {
+      display: flex;
+      justify-content: flex-end;
+      width: min(900px, 100%);
+      margin: -28px auto 34px;
+    }
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 17px;
+      border: 1px solid rgba(140, 197, 165, .42);
+      border-radius: 999px;
+      color: #c5d8cb;
+      background: rgba(7, 20, 15, .48);
+      text-decoration: none;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      transition: .2s ease;
+    }
+    .nav-link:hover {
+      color: #fff;
+      border-color: #7cc69a;
+      background: rgba(33, 163, 108, .14);
+      transform: translateY(-1px);
+    }
+    .nav-link:focus-visible { outline: 2px solid #8bd0a5; outline-offset: 4px; }
+    @media (max-width: 480px) {
+      .top-nav { margin: -18px auto 28px; }
+      .nav-link { padding: 9px 14px; }
+
+      main { padding: 48px 0 38px; }
+      .eyebrow { letter-spacing: .25em; font-size: .65rem; }
+      .countdown { gap: 6px; }
+      .unit { border-radius: 7px; }
+      .unit-name { letter-spacing: .1em; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="top-nav" aria-label="Navegación principal">
+      <a class="nav-link" href="reglas.html">REGLAS <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="eyebrow">The next chapter begins</div>
+    <h1>EMB TOURNAMENT 2 <span>COMING SOON</span></h1>
+    <div class="rule"></div>
+    <div class="label">La cuenta regresiva ha comenzado</div>
+
+    <section class="countdown" aria-label="Cuenta regresiva">
+      <div class="unit"><span class="number" id="days">0</span><span class="unit-name">Días</span></div>
+      <div class="unit"><span class="number" id="hours">00</span><span class="unit-name">Horas</span></div>
+      <div class="unit"><span class="number" id="minutes">00</span><span class="unit-name">Minutos</span></div>
+      <div class="unit"><span class="number" id="seconds">00</span><span class="unit-name">Segundos</span></div>
+    </section>
+
+    <button class="sound-control" id="soundToggle" type="button" aria-pressed="false">
+      <span class="sound-icon" aria-hidden="true">♫</span>
+      <span id="soundLabel">Activar sonido del reloj</span>
+    </button>
+
+    <div class="event-date">SÁBADO · <strong>16 DE ENERO DE 2027</strong> · 12:00 PM (PUERTO RICO)</div>
+    <div class="status" id="status">Preparándose para el evento</div>
+  </main>
+
+  <script>
+    // 16 de enero de 2027, 12:00 p. m. en Puerto Rico (UTC−4).
+    const target = Date.UTC(2027, 0, 16, 16, 0, 0);
+
+    const els = {
+      days: document.getElementById("days"),
+      hours: document.getElementById("hours"),
+      minutes: document.getElementById("minutes"),
+      seconds: document.getElementById("seconds"),
+      status: document.getElementById("status"),
+      soundToggle: document.getElementById("soundToggle"),
+      soundLabel: document.getElementById("soundLabel")
+    };
+
+    const pad = (n) => String(n).padStart(2, "0");
+    let soundEnabled = false;
+    let audioContext = null;
+    let tickCount = 0;
+
+    // Un pequeño tic-tac mecánico. El navegador solo permite iniciarlo
+    // después de que la persona pulse el botón de sonido.
+    function playClockTick() {
+      if (!soundEnabled || !audioContext) return;
+
+      const now = audioContext.currentTime;
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const isTock = tickCount % 2 === 1;
+
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(isTock ? 680 : 920, now);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.12, now + 0.006);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.065);
+
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+      oscillator.start(now);
+      oscillator.stop(now + 0.07);
+      tickCount += 1;
+    }
+
+    els.soundToggle.addEventListener("click", async () => {
+      if (!audioContext) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) {
+          els.soundLabel.textContent = "Audio no compatible";
+          return;
+        }
+        audioContext = new AudioContextClass();
+      }
+
+      if (audioContext.state === "suspended") await audioContext.resume();
+      soundEnabled = !soundEnabled;
+      els.soundToggle.setAttribute("aria-pressed", String(soundEnabled));
+      els.soundLabel.textContent = soundEnabled ? "Silenciar reloj" : "Activar sonido del reloj";
+      els.soundToggle.querySelector(".sound-icon").textContent = soundEnabled ? "◖))" : "♫";
+
+      if (soundEnabled) playClockTick();
+    });
+
+    function updateCountdown() {
+      const remaining = target - Date.now();
+
+      if (remaining <= 0) {
+        els.days.textContent = "0";
+        els.hours.textContent = "00";
+        els.minutes.textContent = "00";
+        els.seconds.textContent = "00";
+        els.status.textContent = "¡EL EVENTO HA COMENZADO!";
+        document.title = "EMB TOURNAMENT 2 — ¡YA COMENZÓ!";
+        return;
+      }
+
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      els.days.textContent = String(days);
+      els.hours.textContent = pad(hours);
+      els.minutes.textContent = pad(minutes);
+      els.seconds.textContent = pad(seconds);
+
+      if (soundEnabled) playClockTick();
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
